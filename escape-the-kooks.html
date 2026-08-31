@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Escape the Kooks</title>
+  <style>
+    body { font-family: Arial; background: #f2f2f2; margin: 0; }
+    header { background: #fff; padding: 20px; text-align: center; border-bottom: 3px solid #000; }
+    nav a { margin: 0 10px; text-decoration: none; color: #000; font-weight: bold; }
+    .section { padding: 40px; text-align: center; }
+    #gameBox {
+      width: 300px;
+      height: 300px;
+      background: lightblue;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+    #player {
+      width: 40px;
+      height: 40px;
+      background: green;
+      position: absolute;
+      top: 130px;
+      left: 130px;
+      border-radius: 10px;
+    }
+    #kook {
+      width: 40px;
+      height: 40px;
+      background: red;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
 
+<header>
+  <h1>Escape the Kooks</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="trivia.html">Trivia</a>
+    <a href="props.html">Props</a>
+    <a href="fan-zone.html">Fan Zone</a>
+  </nav>
+</header>
+
+<div class="section">
+  <h2>Move with arrow keys and don't get caught!</h2>
+
+  <div id="gameBox">
+    <div id="player"></div>
+    <div id="kook"></div>
+  </div>
+
+  <h2 id="status"></h2>
+</div>
+
+<script>
+let player = document.getElementById("player");
+let kook = document.getElementById("kook");
+let status = document.getElementById("status");
+
+document.addEventListener("keydown", (e) => {
+  let top = parseInt(player.style.top);
+  let left = parseInt(player.style.left);
+
+  if (e.key === "ArrowUp") top -= 10;
+  if (e.key === "ArrowDown") top += 10;
+  if (e.key === "ArrowLeft") left -= 10;
+  if (e.key === "ArrowRight") left += 10;
+
+  player.style.top = top + "px";
+  player.style.left = left + "px";
+
+  let kt = parseInt(kook.style.top);
+  let kl = parseInt(kook.style.left);
+
+  if (kt < top) kt += 5;
+  if (kt > top) kt -= 5;
+  if (kl < left) kl += 5;
+  if (kl > left) kl -= 5;
+
+  kook.style.top = kt + "px";
+  kook.style.left = kl + "px";
+
+  if (Math.abs(top - kt) < 30 && Math.abs(left - kl) < 30) {
+    status.innerHTML = "You got caught by the Kooks! 😭";
+  }
+});
+</script>
+
+</body>
+</html>
