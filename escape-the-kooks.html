@@ -69,8 +69,8 @@ let kook = document.getElementById("kook");
 let status = document.getElementById("status");
 
 document.addEventListener("keydown", (e) => {
-  let top = parseInt(player.style.top);
-  let left = parseInt(player.style.left);
+  let top = player.offsetTop;
+  let left = player.offsetLeft;
 
   if (e.key === "ArrowUp") top -= 10;
   if (e.key === "ArrowDown") top += 10;
@@ -80,8 +80,8 @@ document.addEventListener("keydown", (e) => {
   player.style.top = top + "px";
   player.style.left = left + "px";
 
-  let kt = parseInt(kook.style.top);
-  let kl = parseInt(kook.style.left);
+  let kt = kook.offsetTop;
+  let kl = kook.offsetLeft;
 
   if (kt < top) kt += 5;
   if (kt > top) kt -= 5;
@@ -93,3 +93,9 @@ document.addEventListener("keydown", (e) => {
 
   if (Math.abs(top - kt) < 30 && Math.abs(left - kl) < 30) {
     status.innerHTML = "You got caught by the Kooks! 😭";
+  }
+});
+</script>
+
+</body>
+</html>
