@@ -2,100 +2,581 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JJ Maybank Fan Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JJ Maybank Fan Hub | Poguelandia</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Trebuchet MS', sans-serif;
-      background: url('https://i.postimg.cc/3Nwq0m1k/jj-background.jpg') center/cover no-repeat fixed;
-      color: white;
-      text-shadow: 2px 2px 5px black;
+      color: #173f45;
+      background:
+        linear-gradient(
+          rgba(255, 245, 218, 0.18),
+          rgba(255, 245, 218, 0.18)
+        ),
+        url('https://i.postimg.cc/3Nwq0m1k/jj-background.jpg')
+        center/cover fixed no-repeat;
     }
+
+    /* ===== NAVBAR ===== */
 
     header {
-      text-align: center;
-      padding: 70px 20px;
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(3px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(245, 231, 197, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid rgba(23, 63, 69, 0.18);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
     }
 
-    h1 {
-      font-size: 65px;
-      letter-spacing: 3px;
-      font-weight: bold;
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #124d55;
+      white-space: nowrap;
     }
 
     nav {
-      margin-top: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
     }
 
     nav a {
-      color: #7ecbff;
-      margin: 0 18px;
-      font-size: 24px;
+      color: #174c54;
+      padding: 9px 14px;
+      border-radius: 20px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 15px;
+      transition: 0.2s;
     }
 
+    nav a:hover {
+      background: #174c54;
+      color: #fff8e8;
+      transform: translateY(-2px);
+    }
+
+    /* ===== HERO ===== */
+
     .hero {
+      min-height: 88vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 120px 20px;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(2px);
+      padding: 70px 20px;
+
+      background:
+        linear-gradient(
+          rgba(7, 61, 70, 0.30),
+          rgba(7, 61, 70, 0.52)
+        ),
+        url('https://i.postimg.cc/3Nwq0m1k/jj-background.jpg')
+        center/cover no-repeat;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -50px;
+      left: -5%;
+      width: 110%;
+      height: 130px;
+      background: #f5e7c5;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(255, 248, 228, 0.9);
+      color: #164b53;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: white;
+      font-size: clamp(45px, 8vw, 90px);
+      line-height: 0.95;
+      letter-spacing: 4px;
+      text-shadow: 4px 5px 0 rgba(0, 0, 0, 0.28);
     }
 
     .hero h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
+      color: #f9e8b8;
+      font-size: clamp(25px, 4vw, 43px);
+      margin: 18px 0;
+      text-shadow: 2px 3px 4px rgba(0,0,0,0.5);
     }
 
     .hero p {
-      font-size: 24px;
       max-width: 650px;
+      margin: 0 auto 30px;
+      color: white;
+      font-size: 20px;
+      line-height: 1.6;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .main-button {
+      display: inline-block;
+      background: #f1b84b;
+      color: #173f45;
+      padding: 15px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 18px;
+      box-shadow: 0 6px 0 #b87922;
+      transition: 0.2s;
+    }
+
+    .main-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 0 #b87922;
+    }
+
+    /* ===== SECTION ===== */
+
+    .section {
+      padding: 80px 20px;
+      background: #f5e7c5;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-size: 42px;
+      color: #164b53;
+    }
+
+    .section-title p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* ===== FEATURE CARDS ===== */
+
+    .cards {
+      max-width: 1100px;
       margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #fffaf0;
+      border: 2px solid rgba(22, 75, 83, 0.12);
+      border-radius: 20px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(22, 75, 83, 0.12);
+      transition: 0.25s;
+      text-decoration: none;
+      color: #173f45;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow: 0 18px 30px rgba(22, 75, 83, 0.18);
+    }
+
+    .card-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      color: #164b53;
+      font-size: 23px;
+    }
+
+    .card p {
+      line-height: 1.5;
+      opacity: 0.8;
+    }
+
+    /* ===== POLAROIDS ===== */
+
+    .polaroid-section {
+      padding: 90px 20px;
+      background:
+        linear-gradient(
+          rgba(14, 77, 84, 0.72),
+          rgba(14, 77, 84, 0.72)
+        ),
+        url('https://i.postimg.cc/3Nwq0m1k/jj-background.jpg')
+        center/cover fixed;
+    }
+
+    .polaroid-title {
+      color: white;
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .polaroid-title h2 {
+      font-size: 42px;
+      margin-bottom: 10px;
     }
 
     .polaroids {
+      max-width: 900px;
+      margin: auto;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 30px;
-      margin: 60px 0;
+      flex-wrap: wrap;
     }
 
-    .polaroids img {
-      width: 180px;
-      height: 220px;
+    .polaroid {
+      background: white;
+      padding: 10px 10px 22px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.45);
+      transition: 0.25s;
+    }
+
+    .polaroid:nth-child(1) {
+      transform: rotate(-5deg);
+    }
+
+    .polaroid:nth-child(2) {
+      transform: rotate(3deg);
+    }
+
+    .polaroid:nth-child(3) {
+      transform: rotate(-2deg);
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) translateY(-10px) scale(1.04);
+    }
+
+    .polaroid img {
+      width: 190px;
+      height: 230px;
       object-fit: cover;
-      border: 10px solid #fff;
-      box-shadow: 0px 10px 20px rgba(0,0,0,0.6);
-      transform: rotate(-3deg);
+      display: block;
+    }
+
+    .polaroid p {
+      color: #173f45;
+      margin: 12px 0 0;
+      text-align: center;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+    }
+
+    /* ===== QUOTE ===== */
+
+    .quote {
+      padding: 80px 20px;
+      text-align: center;
+      background: #e5d0a3;
+    }
+
+    .quote p {
+      max-width: 750px;
+      margin: auto;
+      font-size: 30px;
+      font-weight: bold;
+      font-style: italic;
+      color: #164b53;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 15px;
+      font-size: 15px;
+      font-style: normal;
+      opacity: 0.7;
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #123f46;
+      color: #f5e7c5;
+      font-size: 14px;
+    }
+
+    /* ===== MOBILE ===== */
+
+    @media (max-width: 700px) {
+
+      .nav-container {
+        flex-direction: column;
+      }
+
+      nav a {
+        font-size: 13px;
+        padding: 7px 10px;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .section-title h2,
+      .polaroid-title h2 {
+        font-size: 34px;
+      }
+
+      .polaroid img {
+        width: 150px;
+        height: 190px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>JJ MAYBANK FAN HUB</h1>
-  <nav>
-    <a href="games.html">Games</a>
-    <a href="trivia.html">Trivia</a>
-    <a href="props.html">Props</a>
-    <a href="fan-zone.html">Fan Zone</a>
-  </nav>
-</header>
+  <!-- NAVIGATION -->
 
-<div class="hero">
-  <h2>Welcome to Poguelandia 🌊</h2>
-  <p>The JJ-coded corner of the Outer Banks — chaos, surfboards, treasure hunts, and pure Pogue energy.</p>
-</div>
+  <header>
+    <div class="nav-container">
 
-<div class="polaroids">
-  <img src="https://i.postimg.cc/0Q8mJm7H/jj-polaroid-1.jpg">
-  <img src="https://i.postimg.cc/3JmJm0tP/jj-polaroid-2.jpg">
-  <img src="https://i.postimg.cc/4y0mJm7H/jj-polaroid-3.jpg">
-</div>
+      <div class="logo">
+        🏝️ POGUE HQ
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="trivia.html">Trivia</a>
+        <a href="props.html">Props</a>
+        <a href="fan-zone.html">Fan Zone</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        UNOFFICIAL OBX FAN SITE
+      </div>
+
+      <h1>
+        JJ MAYBANK
+      </h1>
+
+      <h2>
+        Welcome to Poguelandia 🌊
+      </h2>
+
+      <p>
+        The ultimate JJ-coded corner of the Outer Banks —
+        chaos, friendship, treasure hunts, surfboards and pure Pogue energy.
+      </p>
+
+      <a class="main-button" href="games.html">
+        🎮 ENTER THE GAMES
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURED PAGES -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <h2>Explore the Island 🏝️</h2>
+
+      <p>
+        Pick a destination and see what you can find.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <a class="card" href="games.html">
+
+        <div class="card-icon">🎮</div>
+
+        <h3>Games</h3>
+
+        <p>
+          Play Pogue games and see how well you'd survive the Outer Banks.
+        </p>
+
+      </a>
+
+
+      <a class="card" href="trivia.html">
+
+        <div class="card-icon">🧠</div>
+
+        <h3>Trivia</h3>
+
+        <p>
+          Test your OBX knowledge and see if you're a true fan.
+        </p>
+
+      </a>
+
+
+      <a class="card" href="props.html">
+
+        <div class="card-icon">🧭</div>
+
+        <h3>Props</h3>
+
+        <p>
+          Explore iconic objects and treasure-hunt details.
+        </p>
+
+      </a>
+
+
+      <a class="card" href="fan-zone.html">
+
+        <div class="card-icon">📸</div>
+
+        <h3>Fan Zone</h3>
+
+        <p>
+          Your place for edits, favourites, rankings and fan content.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POLAROIDS -->
+
+  <section class="polaroid-section">
+
+    <div class="polaroid-title">
+
+      <h2>JJ's Corner 📸</h2>
+
+      <p>
+        A little Pogue chaos never hurt anyone.
+      </p>
+
+    </div>
+
+
+    <div class="polaroids">
+
+      <div class="polaroid">
+
+        <img src="https://i.postimg.cc/0Q8mJm7H/jj-polaroid-1.jpg">
+
+        <p>Certified Pogue</p>
+
+      </div>
+
+
+      <div class="polaroid">
+
+        <img src="https://i.postimg.cc/3JmJm0tP/jj-polaroid-2.jpg">
+
+        <p>JJ Maybank 💥</p>
+
+      </div>
+
+
+      <div class="polaroid">
+
+        <img src="https://i.postimg.cc/4y0mJm7H/jj-polaroid-3.jpg">
+
+        <p>Chaos Mode</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUOTE -->
+
+  <section class="quote">
+
+    <p>
+      “Pogues don't die.”
+      <span>— Pogue energy forever 🏝️</span>
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    🏝️ JJ Maybank Fan Hub · Unofficial fan-made website
+
+  </footer>
 
 </body>
 </html>
